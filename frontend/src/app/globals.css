@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-ink text-text font-sans antialiased;
+  }
+
+  /* Thin scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-surface; }
+  ::-webkit-scrollbar-thumb { @apply bg-border rounded-full; }
+
+  /* Focus ring */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-crimson ring-offset-2 ring-offset-ink;
+  }
+}
+
+@layer components {
+  /* Card base */
+  .card {
+    @apply bg-surface border border-border rounded-xl p-5 animate-[fadeIn_0.4s_ease-out];
+  }
+
+  /* Status badges */
+  .badge-critical { @apply text-xs font-semibold px-2 py-0.5 rounded-full bg-crimson/20 text-crimson; }
+  .badge-warning  { @apply text-xs font-semibold px-2 py-0.5 rounded-full bg-warn/20   text-warn; }
+  .badge-safe     { @apply text-xs font-semibold px-2 py-0.5 rounded-full bg-safe/20   text-safe; }
+  .badge-info     { @apply text-xs font-semibold px-2 py-0.5 rounded-full bg-info/20   text-info; }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg
+           bg-crimson text-white font-semibold text-sm
+           hover:bg-crimson-dark transition-colors disabled:opacity-50;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg
+           bg-raised border border-border text-text-dim font-medium text-sm
+           hover:text-text hover:border-muted transition-colors;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm text-muted
+           hover:text-text hover:bg-raised transition-colors;
+  }
+
+  /* Form inputs */
+  .input {
+    @apply w-full bg-raised border border-border rounded-lg px-3 py-2
+           text-sm text-text placeholder:text-muted
+           focus:outline-none focus:ring-2 focus:ring-crimson focus:border-crimson
+           transition;
+  }
+
+  /* Table */
+  .tbl { @apply w-full text-sm; }
+  .tbl thead tr { @apply border-b border-border; }
+  .tbl th { @apply text-left text-xs font-semibold text-muted uppercase tracking-wider pb-3; }
+  .tbl tbody tr { @apply border-b border-border/50 hover:bg-raised/50 transition-colors; }
+  .tbl td { @apply py-3 pr-4; }
+}
